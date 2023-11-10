@@ -1,0 +1,38 @@
+//*********************************************
+//Top Level Module
+//*********************************************
+
+mod
+
+parameter M1;
+parameter M2;
+parameter M3;
+parameter N;
+parameter T;
+parameter R;
+parameter B;
+parameter P1;
+parameter P2;
+parameter P3;
+
+input clk, reset, input_valid, output_ready;
+input signed [T-1:0] input_data;
+output logic signed [T-1:0] output_data;
+output output_valid, input_ready;
+
+logic output_ready1, output_ready2;
+logic output_valid1, output_valid2;
+logic [T-1:0] output_data1, output_data2;
+
+layer1;
+
+layer2;
+
+layer3;
+
+endmodule
+
+//*********************************************
+//END OF Top Level Module
+//*********************************************
+
