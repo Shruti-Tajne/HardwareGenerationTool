@@ -1,0 +1,2177 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+              Version S-2021.06-SP5-4 for linux64 - Aug 05, 2022 
+
+                    Copyright (c) 1988 - 2022 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+Initializing...
+##############################################
+# Setup: fill out the following parameters: name of clock signal, clock period (ns),
+# reset signal name (if used), name of top-level module, name of source file
+set CLK_NAME "clk";
+clk
+set CLK_PERIOD 1;
+1
+set RST_NAME "reset";
+reset
+set TOP_MOD_NAME "net_4_8_12_16_16_1_30";
+net_4_8_12_16_16_1_30
+set SRC_FILE "net_4_8_12_16_16_1_30.sv";
+net_4_8_12_16_16_1_30.sv
+# If you have multiple source files, change the line above to list them all like this:
+# set SRC_FILE [list "file1.sv" "file2.sv"];
+###############################################
+source setupdc.tcl
+NangateOpenCellLibrary_typical.db dw_foundation.sldb
+file mkdir work_synth
+# optimize FSMs
+set fsm_auto_inferring "true"; 
+true
+set fsm_enable_state_minimization "true";
+true
+define_design_lib WORK -path work_synth
+1
+analyze $SRC_FILE -format sverilog
+Running PRESTO HDLC
+Compiling source file ./net_4_8_12_16_16_1_30.sv
+Presto compilation completed successfully.
+Loading db file '/home/home4/pmilder/ese507/synthesis/lib/NangateOpenCellLibrary_typical.db'
+Loading db file '/usr/local/synopsys/syn/S-2021.06-SP5-4/libraries/syn/dw_foundation.sldb'
+1
+elaborate -work WORK $TOP_MOD_NAME
+Loading db file '/usr/local/synopsys/syn/S-2021.06-SP5-4/libraries/syn/gtech.db'
+Loading db file '/usr/local/synopsys/syn/S-2021.06-SP5-4/libraries/syn/standard.sldb'
+  Loading link library 'NangateOpenCellLibrary'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Presto compilation completed successfully. (net_4_8_12_16_16_1_30)
+Elaborated 1 design.
+Current design is now 'net_4_8_12_16_16_1_30'.
+Information: Building the design 'l1_fc1_8_4_16_1_8' instantiated from design 'net_4_8_12_16_16_1_30' with
+	the parameters "8,4,16,1,8". (HDL-193)
+Presto compilation completed successfully. (l1_fc1_8_4_16_1_8_M8_N4_T16_R1_P8)
+Information: Building the design 'l2_fc2_12_8_16_1_6' instantiated from design 'net_4_8_12_16_16_1_30' with
+	the parameters "12,8,16,1,6". (HDL-193)
+Presto compilation completed successfully. (l2_fc2_12_8_16_1_6_M12_N8_T16_R1_P6)
+Information: Building the design 'l3_fc3_16_12_16_1_16' instantiated from design 'net_4_8_12_16_16_1_30' with
+	the parameters "16,12,16,1,16". (HDL-193)
+Presto compilation completed successfully. (l3_fc3_16_12_16_1_16_M16_N12_T16_R1_P16)
+Information: Building the design 'memory' instantiated from design 'l1_fc1_8_4_16_1_8_M8_N4_T16_R1_P8' with
+	the parameters "16,4". (HDL-193)
+
+Inferred memory devices in process
+	in routine memory_WIDTH16_SIZE4 line 2027 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    data_out_reg     | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  64   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+===============================================================
+|     block name/line       | Inputs | Outputs | # sel inputs |
+===============================================================
+| memory_WIDTH16_SIZE4/2028 |   4    |   16    |      2       |
+===============================================================
+Presto compilation completed successfully. (memory_WIDTH16_SIZE4)
+Information: Building the design 'l1_fc1_8_4_16_1_8_W_rom_1'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:460: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:461: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:462: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 458 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           459            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine l1_fc1_8_4_16_1_8_W_rom_1 line 458 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l1_fc1_8_4_16_1_8_W_rom_1)
+Information: Building the design 'l1_fc1_8_4_16_1_8_W_rom_2'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:475: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 472 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           473            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine l1_fc1_8_4_16_1_8_W_rom_2 line 472 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l1_fc1_8_4_16_1_8_W_rom_2)
+Information: Building the design 'l1_fc1_8_4_16_1_8_W_rom_3'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:489: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 486 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           487            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine l1_fc1_8_4_16_1_8_W_rom_3 line 486 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l1_fc1_8_4_16_1_8_W_rom_3)
+Information: Building the design 'l1_fc1_8_4_16_1_8_W_rom_4'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:505: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 500 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           501            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine l1_fc1_8_4_16_1_8_W_rom_4 line 500 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l1_fc1_8_4_16_1_8_W_rom_4)
+Information: Building the design 'l1_fc1_8_4_16_1_8_W_rom_5'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:516: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:518: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 514 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           515            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine l1_fc1_8_4_16_1_8_W_rom_5 line 514 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l1_fc1_8_4_16_1_8_W_rom_5)
+Information: Building the design 'l1_fc1_8_4_16_1_8_W_rom_6'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:530: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:531: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 528 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           529            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine l1_fc1_8_4_16_1_8_W_rom_6 line 528 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l1_fc1_8_4_16_1_8_W_rom_6)
+Information: Building the design 'l1_fc1_8_4_16_1_8_W_rom_7'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:546: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:547: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 542 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           543            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine l1_fc1_8_4_16_1_8_W_rom_7 line 542 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l1_fc1_8_4_16_1_8_W_rom_7)
+Information: Building the design 'l1_fc1_8_4_16_1_8_W_rom_8'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:558: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:560: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 556 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           557            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine l1_fc1_8_4_16_1_8_W_rom_8 line 556 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l1_fc1_8_4_16_1_8_W_rom_8)
+Information: Building the design 'l1_fc1_8_4_16_1_8_control' instantiated from design 'l1_fc1_8_4_16_1_8_M8_N4_T16_R1_P8' with
+	the parameters "8,4,16,1,8". (HDL-193)
+
+Inferred memory devices in process
+	in routine l1_fc1_8_4_16_1_8_control_M8_N4_T16_R1_P8 line 377 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+================================================================================
+|    Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+================================================================================
+|    reset_mux_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      state_reg       | Flip-flop |   3   |  Y  | N  | N  | N  | N  | N  | N  |
+|   reset_countX_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|  reset_count_op_reg  | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+| reset_count_acc_reg  | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+| reset_count_read_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   reset_en_acc_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+================================================================================
+Presto compilation completed successfully. (l1_fc1_8_4_16_1_8_control_M8_N4_T16_R1_P8)
+Information: Building the design 'l1_fc1_8_4_16_1_8_datapath' instantiated from design 'l1_fc1_8_4_16_1_8_M8_N4_T16_R1_P8' with
+	the parameters "8,4,16,1,8". (HDL-193)
+Presto compilation completed successfully. (l1_fc1_8_4_16_1_8_datapath_M8_N4_T16_R1_P8)
+Information: Building the design 'memory' instantiated from design 'l2_fc2_12_8_16_1_6_M12_N8_T16_R1_P6' with
+	the parameters "16,8". (HDL-193)
+
+Inferred memory devices in process
+	in routine memory_WIDTH16_SIZE8 line 2027 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    data_out_reg     | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  128  |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+===============================================================
+|     block name/line       | Inputs | Outputs | # sel inputs |
+===============================================================
+| memory_WIDTH16_SIZE8/2028 |   8    |   16    |      3       |
+===============================================================
+Presto compilation completed successfully. (memory_WIDTH16_SIZE8)
+Information: Building the design 'l2_fc2_12_8_16_1_6_W_rom_1'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:976: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:977: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:979: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:981: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:983: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:984: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:987: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:988: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 973 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           974            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine l2_fc2_12_8_16_1_6_W_rom_1 line 973 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l2_fc2_12_8_16_1_6_W_rom_1)
+Information: Building the design 'l2_fc2_12_8_16_1_6_W_rom_2'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1001: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1002: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1006: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1008: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1009: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1012: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1016: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 999 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1000           |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine l2_fc2_12_8_16_1_6_W_rom_2 line 999 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l2_fc2_12_8_16_1_6_W_rom_2)
+Information: Building the design 'l2_fc2_12_8_16_1_6_W_rom_3'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1027: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1029: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1031: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1032: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1033: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1034: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1035: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1036: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1038: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1041: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 1025 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1026           |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine l2_fc2_12_8_16_1_6_W_rom_3 line 1025 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l2_fc2_12_8_16_1_6_W_rom_3)
+Information: Building the design 'l2_fc2_12_8_16_1_6_W_rom_4'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1054: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1055: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1056: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1058: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1060: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1061: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1063: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1064: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1065: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1066: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1068: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 1051 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1052           |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine l2_fc2_12_8_16_1_6_W_rom_4 line 1051 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l2_fc2_12_8_16_1_6_W_rom_4)
+Information: Building the design 'l2_fc2_12_8_16_1_6_W_rom_5'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1079: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1084: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1085: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 1077 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1078           |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine l2_fc2_12_8_16_1_6_W_rom_5 line 1077 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l2_fc2_12_8_16_1_6_W_rom_5)
+Information: Building the design 'l2_fc2_12_8_16_1_6_W_rom_6'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1105: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1106: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1109: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1110: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1111: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1112: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1113: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1115: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1116: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1117: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1119: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1120: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 1103 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1104           |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine l2_fc2_12_8_16_1_6_W_rom_6 line 1103 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l2_fc2_12_8_16_1_6_W_rom_6)
+Information: Building the design 'l2_fc2_12_8_16_1_6_control' instantiated from design 'l2_fc2_12_8_16_1_6_M12_N8_T16_R1_P6' with
+	the parameters "12,8,16,1,6". (HDL-193)
+
+Inferred memory devices in process
+	in routine l2_fc2_12_8_16_1_6_control_M12_N8_T16_R1_P6 line 892 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+================================================================================
+|    Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+================================================================================
+|    reset_mux_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      state_reg       | Flip-flop |   3   |  Y  | N  | N  | N  | N  | N  | N  |
+|   reset_countX_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|  reset_count_op_reg  | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+| reset_count_acc_reg  | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+| reset_count_read_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   reset_en_acc_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+================================================================================
+Presto compilation completed successfully. (l2_fc2_12_8_16_1_6_control_M12_N8_T16_R1_P6)
+Information: Building the design 'l2_fc2_12_8_16_1_6_datapath' instantiated from design 'l2_fc2_12_8_16_1_6_M12_N8_T16_R1_P6' with
+	the parameters "12,8,16,1,6". (HDL-193)
+Presto compilation completed successfully. (l2_fc2_12_8_16_1_6_datapath_M12_N8_T16_R1_P6)
+Information: Building the design 'memory' instantiated from design 'l3_fc3_16_12_16_1_16_M16_N12_T16_R1_P16' with
+	the parameters "16,12". (HDL-193)
+
+Inferred memory devices in process
+	in routine memory_WIDTH16_SIZE12 line 2027 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    data_out_reg     | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+|       mem_reg       | Flip-flop |  192  |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (memory_WIDTH16_SIZE12)
+Information: Building the design 'l3_fc3_16_12_16_1_16_W_rom_1'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1594: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1600: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1603: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 1592 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1593           |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine l3_fc3_16_12_16_1_16_W_rom_1 line 1592 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l3_fc3_16_12_16_1_16_W_rom_1)
+Information: Building the design 'l3_fc3_16_12_16_1_16_W_rom_2'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1619: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1620: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1623: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1624: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 1614 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1615           |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine l3_fc3_16_12_16_1_16_W_rom_2 line 1614 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l3_fc3_16_12_16_1_16_W_rom_2)
+Information: Building the design 'l3_fc3_16_12_16_1_16_W_rom_3'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1638: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1639: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1641: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1646: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1647: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1648: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 1636 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1637           |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine l3_fc3_16_12_16_1_16_W_rom_3 line 1636 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l3_fc3_16_12_16_1_16_W_rom_3)
+Information: Building the design 'l3_fc3_16_12_16_1_16_W_rom_4'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1660: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1661: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1662: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1665: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1666: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1667: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1669: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1671: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 1658 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1659           |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine l3_fc3_16_12_16_1_16_W_rom_4 line 1658 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l3_fc3_16_12_16_1_16_W_rom_4)
+Information: Building the design 'l3_fc3_16_12_16_1_16_W_rom_5'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1682: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1684: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1686: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1687: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1688: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1689: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1690: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1692: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 1680 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1681           |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine l3_fc3_16_12_16_1_16_W_rom_5 line 1680 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l3_fc3_16_12_16_1_16_W_rom_5)
+Information: Building the design 'l3_fc3_16_12_16_1_16_W_rom_6'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1705: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1706: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1708: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1711: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1714: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1715: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 1702 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1703           |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine l3_fc3_16_12_16_1_16_W_rom_6 line 1702 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l3_fc3_16_12_16_1_16_W_rom_6)
+Information: Building the design 'l3_fc3_16_12_16_1_16_W_rom_7'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1726: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1731: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1732: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1734: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1735: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1737: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 1724 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1725           |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine l3_fc3_16_12_16_1_16_W_rom_7 line 1724 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l3_fc3_16_12_16_1_16_W_rom_7)
+Information: Building the design 'l3_fc3_16_12_16_1_16_W_rom_8'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1748: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1751: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1753: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1754: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1755: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1756: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1758: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1759: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 1746 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1747           |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine l3_fc3_16_12_16_1_16_W_rom_8 line 1746 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l3_fc3_16_12_16_1_16_W_rom_8)
+Information: Building the design 'l3_fc3_16_12_16_1_16_W_rom_9'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1770: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1776: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1777: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1781: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 1768 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1769           |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine l3_fc3_16_12_16_1_16_W_rom_9 line 1768 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l3_fc3_16_12_16_1_16_W_rom_9)
+Information: Building the design 'l3_fc3_16_12_16_1_16_W_rom_10'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1792: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1793: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1794: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1795: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1796: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1801: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1802: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1803: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 1790 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1791           |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine l3_fc3_16_12_16_1_16_W_rom_10 line 1790 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l3_fc3_16_12_16_1_16_W_rom_10)
+Information: Building the design 'l3_fc3_16_12_16_1_16_W_rom_11'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1814: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1815: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1817: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1824: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 1812 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1813           |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine l3_fc3_16_12_16_1_16_W_rom_11 line 1812 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l3_fc3_16_12_16_1_16_W_rom_11)
+Information: Building the design 'l3_fc3_16_12_16_1_16_W_rom_12'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1837: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1839: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1840: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1842: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 1834 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1835           |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine l3_fc3_16_12_16_1_16_W_rom_12 line 1834 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l3_fc3_16_12_16_1_16_W_rom_12)
+Information: Building the design 'l3_fc3_16_12_16_1_16_W_rom_13'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1861: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1865: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1867: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1869: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 1856 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1857           |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine l3_fc3_16_12_16_1_16_W_rom_13 line 1856 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l3_fc3_16_12_16_1_16_W_rom_13)
+Information: Building the design 'l3_fc3_16_12_16_1_16_W_rom_14'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1880: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1881: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1882: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1883: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1887: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1888: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1889: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1890: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1891: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 1878 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1879           |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine l3_fc3_16_12_16_1_16_W_rom_14 line 1878 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l3_fc3_16_12_16_1_16_W_rom_14)
+Information: Building the design 'l3_fc3_16_12_16_1_16_W_rom_15'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1902: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1909: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1910: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1911: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1912: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1913: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 1900 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1901           |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine l3_fc3_16_12_16_1_16_W_rom_15 line 1900 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l3_fc3_16_12_16_1_16_W_rom_15)
+Information: Building the design 'l3_fc3_16_12_16_1_16_W_rom_16'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1925: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1926: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1928: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1930: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1932: unsigned to signed assignment occurs. (VER-318)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1933: unsigned to signed assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 1922 in file
+	'./net_4_8_12_16_16_1_30.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1923           |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine l3_fc3_16_12_16_1_16_W_rom_16 line 1922 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        z_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (l3_fc3_16_12_16_1_16_W_rom_16)
+Information: Building the design 'l3_fc3_16_12_16_1_16_control' instantiated from design 'l3_fc3_16_12_16_1_16_M16_N12_T16_R1_P16' with
+	the parameters "16,12,16,1,16". (HDL-193)
+
+Inferred memory devices in process
+	in routine l3_fc3_16_12_16_1_16_control_M16_N12_T16_R1_P16 line 1511 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+================================================================================
+|    Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+================================================================================
+|    reset_mux_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|      state_reg       | Flip-flop |   3   |  Y  | N  | N  | N  | N  | N  | N  |
+|   reset_countX_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|  reset_count_op_reg  | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+| reset_count_acc_reg  | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+| reset_count_read_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+|   reset_en_acc_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+================================================================================
+Presto compilation completed successfully. (l3_fc3_16_12_16_1_16_control_M16_N12_T16_R1_P16)
+Information: Building the design 'l3_fc3_16_12_16_1_16_datapath' instantiated from design 'l3_fc3_16_12_16_1_16_M16_N12_T16_R1_P16' with
+	the parameters "16,12,16,1,16". (HDL-193)
+Presto compilation completed successfully. (l3_fc3_16_12_16_1_16_datapath_M16_N12_T16_R1_P16)
+Information: Building the design 'counter' instantiated from design 'l1_fc1_8_4_16_1_8_control_M8_N4_T16_R1_P8' with
+	the parameters "4". (HDL-193)
+
+Inferred memory devices in process
+	in routine counter_OF4 line 1991 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     regOut_reg      | Flip-flop |   3   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (counter_OF4)
+Information: Building the design 'counter' instantiated from design 'l1_fc1_8_4_16_1_8_control_M8_N4_T16_R1_P8' with
+	the parameters "1". (HDL-193)
+
+Inferred memory devices in process
+	in routine counter_OF1 line 1991 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     regOut_reg      | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (counter_OF1)
+Information: Building the design 'counter' instantiated from design 'l1_fc1_8_4_16_1_8_control_M8_N4_T16_R1_P8' with
+	the parameters "5". (HDL-193)
+
+Inferred memory devices in process
+	in routine counter_OF5 line 1991 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     regOut_reg      | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (counter_OF5)
+Information: Building the design 'counter' instantiated from design 'l1_fc1_8_4_16_1_8_control_M8_N4_T16_R1_P8' with
+	the parameters "8". (HDL-193)
+
+Inferred memory devices in process
+	in routine counter_OF8 line 1991 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     regOut_reg      | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (counter_OF8)
+Information: Building the design 'dff'. (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1975: unsigned to signed assignment occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine dff line 1970 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |   1   |  N  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (dff)
+Information: Building the design 'dff' instantiated from design 'l1_fc1_8_4_16_1_8_datapath_M8_N4_T16_R1_P8' with
+	the parameters "16". (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1975: unsigned to signed assignment occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine dff_WIDTH16 line 1970 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (dff_WIDTH16)
+Information: Building the design 'acc' instantiated from design 'l1_fc1_8_4_16_1_8_datapath_M8_N4_T16_R1_P8' with
+	the parameters "16". (HDL-193)
+Warning:  ./net_4_8_12_16_16_1_30.sv:1956: unsigned to signed assignment occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine acc_WIDTH16 line 1950 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|        q_reg        | Flip-flop |  16   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (acc_WIDTH16)
+Information: Building the design 'counter' instantiated from design 'l2_fc2_12_8_16_1_6_control_M12_N8_T16_R1_P6' with
+	the parameters "2". (HDL-193)
+
+Inferred memory devices in process
+	in routine counter_OF2 line 1991 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     regOut_reg      | Flip-flop |   2   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (counter_OF2)
+Information: Building the design 'counter' instantiated from design 'l2_fc2_12_8_16_1_6_control_M12_N8_T16_R1_P6' with
+	the parameters "9". (HDL-193)
+
+Inferred memory devices in process
+	in routine counter_OF9 line 1991 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     regOut_reg      | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (counter_OF9)
+Information: Building the design 'counter' instantiated from design 'l2_fc2_12_8_16_1_6_control_M12_N8_T16_R1_P6' with
+	the parameters "6". (HDL-193)
+
+Inferred memory devices in process
+	in routine counter_OF6 line 1991 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     regOut_reg      | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (counter_OF6)
+Information: Building the design 'counter' instantiated from design 'l3_fc3_16_12_16_1_16_control_M16_N12_T16_R1_P16' with
+	the parameters "12". (HDL-193)
+
+Inferred memory devices in process
+	in routine counter_OF12 line 1991 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     regOut_reg      | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (counter_OF12)
+Information: Building the design 'counter' instantiated from design 'l3_fc3_16_12_16_1_16_control_M16_N12_T16_R1_P16' with
+	the parameters "13". (HDL-193)
+
+Inferred memory devices in process
+	in routine counter_OF13 line 1991 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     regOut_reg      | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (counter_OF13)
+Information: Building the design 'counter' instantiated from design 'l3_fc3_16_12_16_1_16_control_M16_N12_T16_R1_P16' with
+	the parameters "16". (HDL-193)
+
+Inferred memory devices in process
+	in routine counter_OF16 line 1991 in file
+		'./net_4_8_12_16_16_1_30.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     regOut_reg      | Flip-flop |   5   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (counter_OF16)
+1
+###### CLOCKS AND PORTS #######
+set CLK_PORT [get_ports $CLK_NAME]
+{clk}
+set TMP1 [remove_from_collection [all_inputs] $CLK_PORT]
+{reset input_valid input_data[15] input_data[14] input_data[13] input_data[12] input_data[11] input_data[10] input_data[9] input_data[8] input_data[7] input_data[6] input_data[5] input_data[4] input_data[3] input_data[2] input_data[1] input_data[0] output_ready}
+set INPUTS [remove_from_collection $TMP1 $RST_NAME]
+{input_valid input_data[15] input_data[14] input_data[13] input_data[12] input_data[11] input_data[10] input_data[9] input_data[8] input_data[7] input_data[6] input_data[5] input_data[4] input_data[3] input_data[2] input_data[1] input_data[0] output_ready}
+create_clock -period $CLK_PERIOD [get_ports clk]
+1
+# set delay for inputs to be 0.2ns
+set_input_delay 0.2 -max -clock clk $INPUTS
+1
+set_output_delay 0.2 -max -clock clk [all_outputs]
+1
+###### OPTIMIZATION #######
+set_max_area 0 
+1
+###### RUN #####
+compile_ultra
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | S-2021.06-DWBB_202106.5 |     *     |
+| Licensed DW Building Blocks        | S-2021.06-DWBB_202106.5 |     *     |
+============================================================================
+
+============================================================================
+| Flow Information                                                         |
+----------------------------------------------------------------------------
+| Flow         | Design Compiler WLM                                       |
+============================================================================
+| Design Information                                      | Value          |
+============================================================================
+| Number of Scenarios                                     | 0              |
+| Leaf Cell Count                                         | 6158           |
+| Number of User Hierarchies                              | 207            |
+| Sequential Cell Count                                   | 2018           |
+| Macro Count                                             | 0              |
+| Number of Power Domains                                 | 0              |
+| Design with UPF Data                                    | false          |
+============================================================================
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 121 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+Information: Uniquified 8 instances of design 'l1_fc1_8_4_16_1_8_datapath_M8_N4_T16_R1_P8'. (OPT-1056)
+Information: Uniquified 6 instances of design 'l2_fc2_12_8_16_1_6_datapath_M12_N8_T16_R1_P6'. (OPT-1056)
+Information: Uniquified 16 instances of design 'l3_fc3_16_12_16_1_16_datapath_M16_N12_T16_R1_P16'. (OPT-1056)
+Information: Uniquified 2 instances of design 'counter_OF4'. (OPT-1056)
+Information: Uniquified 4 instances of design 'counter_OF1'. (OPT-1056)
+Information: Uniquified 3 instances of design 'counter_OF8'. (OPT-1056)
+Information: Uniquified 60 instances of design 'dff'. (OPT-1056)
+Information: Uniquified 30 instances of design 'dff_WIDTH16'. (OPT-1056)
+Information: Uniquified 30 instances of design 'acc_WIDTH16'. (OPT-1056)
+Information: Uniquified 2 instances of design 'counter_OF2'. (OPT-1056)
+Information: Uniquified 2 instances of design 'counter_OF12'. (OPT-1056)
+  Simplifying Design 'net_4_8_12_16_16_1_30'
+
+Loaded alib file './alib-52/NangateOpenCellLibrary_typical.db.alib'
+  Building model 'DW01_NAND2'
+Information: Ungrouping hierarchy layer1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/memV_l1_fc1_8_4_16_1_8 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/romW_1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/romW_2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/romW_3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/romW_4 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/romW_5 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/romW_6 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/romW_7 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/romW_8 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/control_l1_fc1_8_4_16_1_8 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_1_l1_fc1_8_4_16_1_8 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/memV_l2_fc2_12_8_16_1_6 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/romW_1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/romW_2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/romW_3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/romW_4 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/romW_5 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/romW_6 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/control_l2_fc2_12_8_16_1_6 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_1_l2_fc2_12_8_16_1_6 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/memV_l3_fc3_16_12_16_1_16 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/romW_1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/romW_2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/romW_3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/romW_4 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/romW_5 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/romW_6 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/romW_7 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/romW_8 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/romW_9 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/romW_10 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/romW_11 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/romW_12 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/romW_13 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/romW_14 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/romW_15 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/romW_16 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/control_l3_fc3_16_12_16_1_16 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_1_l3_fc3_16_12_16_1_16 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_8_l1_fc1_8_4_16_1_8 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_7_l1_fc1_8_4_16_1_8 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_6_l1_fc1_8_4_16_1_8 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_5_l1_fc1_8_4_16_1_8 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_4_l1_fc1_8_4_16_1_8 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_3_l1_fc1_8_4_16_1_8 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_2_l1_fc1_8_4_16_1_8 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_6_l2_fc2_12_8_16_1_6 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_5_l2_fc2_12_8_16_1_6 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_4_l2_fc2_12_8_16_1_6 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_3_l2_fc2_12_8_16_1_6 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_2_l2_fc2_12_8_16_1_6 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_16_l3_fc3_16_12_16_1_16 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_15_l3_fc3_16_12_16_1_16 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_14_l3_fc3_16_12_16_1_16 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_13_l3_fc3_16_12_16_1_16 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_12_l3_fc3_16_12_16_1_16 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_11_l3_fc3_16_12_16_1_16 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_10_l3_fc3_16_12_16_1_16 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_9_l3_fc3_16_12_16_1_16 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_8_l3_fc3_16_12_16_1_16 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_7_l3_fc3_16_12_16_1_16 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_6_l3_fc3_16_12_16_1_16 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_5_l3_fc3_16_12_16_1_16 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_4_l3_fc3_16_12_16_1_16 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_3_l3_fc3_16_12_16_1_16 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_2_l3_fc3_16_12_16_1_16 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/control_l1_fc1_8_4_16_1_8/countV before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/control_l1_fc1_8_4_16_1_8/countCLR before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/control_l1_fc1_8_4_16_1_8/countREAD before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/control_l1_fc1_8_4_16_1_8/countMUX before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_1_l1_fc1_8_4_16_1_8/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_1_l1_fc1_8_4_16_1_8/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_1_l1_fc1_8_4_16_1_8/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/control_l2_fc2_12_8_16_1_6/countCLR before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/control_l2_fc2_12_8_16_1_6/countREAD before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/control_l2_fc2_12_8_16_1_6/countMUX before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/control_l3_fc3_16_12_16_1_16/countV before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/control_l3_fc3_16_12_16_1_16/countREAD before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/control_l3_fc3_16_12_16_1_16/countMUX before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/control_l1_fc1_8_4_16_1_8/countOP before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/control_l3_fc3_16_12_16_1_16/countACC before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/control_l3_fc3_16_12_16_1_16/countCLR before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/control_l1_fc1_8_4_16_1_8/countACC before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/control_l2_fc2_12_8_16_1_6/countOP before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/control_l2_fc2_12_8_16_1_6/countV before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_16_l3_fc3_16_12_16_1_16/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_16_l3_fc3_16_12_16_1_16/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_15_l3_fc3_16_12_16_1_16/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_15_l3_fc3_16_12_16_1_16/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_14_l3_fc3_16_12_16_1_16/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_14_l3_fc3_16_12_16_1_16/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_13_l3_fc3_16_12_16_1_16/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_13_l3_fc3_16_12_16_1_16/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_12_l3_fc3_16_12_16_1_16/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_12_l3_fc3_16_12_16_1_16/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_11_l3_fc3_16_12_16_1_16/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_11_l3_fc3_16_12_16_1_16/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_10_l3_fc3_16_12_16_1_16/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_10_l3_fc3_16_12_16_1_16/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_9_l3_fc3_16_12_16_1_16/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_9_l3_fc3_16_12_16_1_16/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_8_l3_fc3_16_12_16_1_16/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_8_l3_fc3_16_12_16_1_16/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_7_l3_fc3_16_12_16_1_16/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_7_l3_fc3_16_12_16_1_16/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_6_l3_fc3_16_12_16_1_16/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_6_l3_fc3_16_12_16_1_16/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_5_l3_fc3_16_12_16_1_16/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_5_l3_fc3_16_12_16_1_16/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_4_l3_fc3_16_12_16_1_16/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_4_l3_fc3_16_12_16_1_16/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_3_l3_fc3_16_12_16_1_16/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_3_l3_fc3_16_12_16_1_16/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_2_l3_fc3_16_12_16_1_16/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_2_l3_fc3_16_12_16_1_16/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_1_l3_fc3_16_12_16_1_16/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_1_l3_fc3_16_12_16_1_16/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_6_l2_fc2_12_8_16_1_6/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_6_l2_fc2_12_8_16_1_6/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_5_l2_fc2_12_8_16_1_6/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_5_l2_fc2_12_8_16_1_6/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_4_l2_fc2_12_8_16_1_6/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_4_l2_fc2_12_8_16_1_6/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_3_l2_fc2_12_8_16_1_6/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_3_l2_fc2_12_8_16_1_6/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_2_l2_fc2_12_8_16_1_6/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_2_l2_fc2_12_8_16_1_6/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_1_l2_fc2_12_8_16_1_6/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_1_l2_fc2_12_8_16_1_6/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_8_l1_fc1_8_4_16_1_8/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_8_l1_fc1_8_4_16_1_8/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_7_l1_fc1_8_4_16_1_8/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_7_l1_fc1_8_4_16_1_8/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_6_l1_fc1_8_4_16_1_8/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_6_l1_fc1_8_4_16_1_8/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_5_l1_fc1_8_4_16_1_8/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_5_l1_fc1_8_4_16_1_8/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_4_l1_fc1_8_4_16_1_8/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_4_l1_fc1_8_4_16_1_8/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_3_l1_fc1_8_4_16_1_8/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_3_l1_fc1_8_4_16_1_8/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_2_l1_fc1_8_4_16_1_8/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_2_l1_fc1_8_4_16_1_8/reg_C1 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_1_l1_fc1_8_4_16_1_8/reg_C2 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_16_l3_fc3_16_12_16_1_16/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_15_l3_fc3_16_12_16_1_16/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_14_l3_fc3_16_12_16_1_16/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_13_l3_fc3_16_12_16_1_16/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_12_l3_fc3_16_12_16_1_16/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_11_l3_fc3_16_12_16_1_16/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_10_l3_fc3_16_12_16_1_16/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_9_l3_fc3_16_12_16_1_16/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_8_l3_fc3_16_12_16_1_16/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_7_l3_fc3_16_12_16_1_16/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_6_l3_fc3_16_12_16_1_16/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_5_l3_fc3_16_12_16_1_16/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_4_l3_fc3_16_12_16_1_16/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_3_l3_fc3_16_12_16_1_16/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_2_l3_fc3_16_12_16_1_16/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_1_l3_fc3_16_12_16_1_16/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_6_l2_fc2_12_8_16_1_6/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_5_l2_fc2_12_8_16_1_6/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_4_l2_fc2_12_8_16_1_6/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_3_l2_fc2_12_8_16_1_6/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_2_l2_fc2_12_8_16_1_6/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_1_l2_fc2_12_8_16_1_6/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_8_l1_fc1_8_4_16_1_8/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_7_l1_fc1_8_4_16_1_8/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_6_l1_fc1_8_4_16_1_8/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_5_l1_fc1_8_4_16_1_8/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_4_l1_fc1_8_4_16_1_8/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_3_l1_fc1_8_4_16_1_8/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_2_l1_fc1_8_4_16_1_8/reg_C3 before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_16_l3_fc3_16_12_16_1_16/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_15_l3_fc3_16_12_16_1_16/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_14_l3_fc3_16_12_16_1_16/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_13_l3_fc3_16_12_16_1_16/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_12_l3_fc3_16_12_16_1_16/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_11_l3_fc3_16_12_16_1_16/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_10_l3_fc3_16_12_16_1_16/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_9_l3_fc3_16_12_16_1_16/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_8_l3_fc3_16_12_16_1_16/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_7_l3_fc3_16_12_16_1_16/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_6_l3_fc3_16_12_16_1_16/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_5_l3_fc3_16_12_16_1_16/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_4_l3_fc3_16_12_16_1_16/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_3_l3_fc3_16_12_16_1_16/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_2_l3_fc3_16_12_16_1_16/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/dp_1_l3_fc3_16_12_16_1_16/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_6_l2_fc2_12_8_16_1_6/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_5_l2_fc2_12_8_16_1_6/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_4_l2_fc2_12_8_16_1_6/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_3_l2_fc2_12_8_16_1_6/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_2_l2_fc2_12_8_16_1_6/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/dp_1_l2_fc2_12_8_16_1_6/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_8_l1_fc1_8_4_16_1_8/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_7_l1_fc1_8_4_16_1_8/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_6_l1_fc1_8_4_16_1_8/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_5_l1_fc1_8_4_16_1_8/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_4_l1_fc1_8_4_16_1_8/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_3_l1_fc1_8_4_16_1_8/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer1/dp_2_l1_fc1_8_4_16_1_8/reg_acc before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer2/control_l2_fc2_12_8_16_1_6/countACC before Pass 1 (OPT-776)
+Information: Ungrouping hierarchy layer3/control_l3_fc3_16_12_16_1_16/countOP before Pass 1 (OPT-776)
+Information: Ungrouping 207 of 208 hierarchies before Pass 1 (OPT-775)
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'net_4_8_12_16_16_1_30'
+Information: Added key list 'DesignWare' to design 'net_4_8_12_16_16_1_30'. (DDB-72)
+Information: The register 'layer1/romW_8/z_reg[1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer1/romW_7/z_reg[2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer1/romW_1/z_reg[0]' is a constant and will be removed. (OPT-1206)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/control_l1_fc1_8_4_16_1_8/reset_count_read_reg' is removed because it is merged to 'layer1/control_l1_fc1_8_4_16_1_8/reset_en_acc_reg'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/control_l1_fc1_8_4_16_1_8/reset_count_acc_reg' is removed because it is merged to 'layer1/control_l1_fc1_8_4_16_1_8/reset_countX_reg'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/control_l1_fc1_8_4_16_1_8/reset_mux_reg' is removed because it is merged to 'layer1/control_l1_fc1_8_4_16_1_8/reset_count_op_reg'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/control_l2_fc2_12_8_16_1_6/reset_en_acc_reg' is removed because it is merged to 'layer2/control_l2_fc2_12_8_16_1_6/reset_count_read_reg'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/control_l2_fc2_12_8_16_1_6/reset_count_acc_reg' is removed because it is merged to 'layer2/control_l2_fc2_12_8_16_1_6/reset_countX_reg'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/control_l2_fc2_12_8_16_1_6/reset_mux_reg' is removed because it is merged to 'layer2/control_l2_fc2_12_8_16_1_6/reset_count_op_reg'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/control_l3_fc3_16_12_16_1_16/reset_en_acc_reg' is removed because it is merged to 'layer3/control_l3_fc3_16_12_16_1_16/reset_count_read_reg'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/control_l3_fc3_16_12_16_1_16/reset_count_acc_reg' is removed because it is merged to 'layer3/control_l3_fc3_16_12_16_1_16/reset_countX_reg'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/control_l3_fc3_16_12_16_1_16/reset_mux_reg' is removed because it is merged to 'layer3/control_l3_fc3_16_12_16_1_16/reset_count_op_reg'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_13/z_reg[5]' is removed because it is merged to 'layer3/romW_13/z_reg[4]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_13/z_reg[6]' is removed because it is merged to 'layer3/romW_13/z_reg[4]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_13/z_reg[7]' is removed because it is merged to 'layer3/romW_13/z_reg[4]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_13/z_reg[8]' is removed because it is merged to 'layer3/romW_13/z_reg[4]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_13/z_reg[9]' is removed because it is merged to 'layer3/romW_13/z_reg[4]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_13/z_reg[10]' is removed because it is merged to 'layer3/romW_13/z_reg[4]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_13/z_reg[11]' is removed because it is merged to 'layer3/romW_13/z_reg[4]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_13/z_reg[12]' is removed because it is merged to 'layer3/romW_13/z_reg[4]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_13/z_reg[13]' is removed because it is merged to 'layer3/romW_13/z_reg[4]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_13/z_reg[14]' is removed because it is merged to 'layer3/romW_13/z_reg[4]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_13/z_reg[15]' is removed because it is merged to 'layer3/romW_13/z_reg[4]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_13/z_reg[3]' is removed because it is merged to 'layer3/romW_13/z_reg[4]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_14/z_reg[15]' is removed because it is merged to 'layer3/romW_14/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_14/z_reg[14]' is removed because it is merged to 'layer3/romW_14/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_14/z_reg[13]' is removed because it is merged to 'layer3/romW_14/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_14/z_reg[12]' is removed because it is merged to 'layer3/romW_14/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_14/z_reg[11]' is removed because it is merged to 'layer3/romW_14/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_14/z_reg[10]' is removed because it is merged to 'layer3/romW_14/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_14/z_reg[9]' is removed because it is merged to 'layer3/romW_14/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_14/z_reg[8]' is removed because it is merged to 'layer3/romW_14/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_14/z_reg[7]' is removed because it is merged to 'layer3/romW_14/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_14/z_reg[6]' is removed because it is merged to 'layer3/romW_14/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_14/z_reg[5]' is removed because it is merged to 'layer3/romW_14/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_14/z_reg[4]' is removed because it is merged to 'layer3/romW_14/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_7/z_reg[15]' is removed because it is merged to 'layer3/romW_7/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_7/z_reg[14]' is removed because it is merged to 'layer3/romW_7/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_7/z_reg[13]' is removed because it is merged to 'layer3/romW_7/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_7/z_reg[12]' is removed because it is merged to 'layer3/romW_7/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_7/z_reg[11]' is removed because it is merged to 'layer3/romW_7/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_7/z_reg[10]' is removed because it is merged to 'layer3/romW_7/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_7/z_reg[9]' is removed because it is merged to 'layer3/romW_7/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_7/z_reg[8]' is removed because it is merged to 'layer3/romW_7/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_7/z_reg[7]' is removed because it is merged to 'layer3/romW_7/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_7/z_reg[6]' is removed because it is merged to 'layer3/romW_7/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_7/z_reg[5]' is removed because it is merged to 'layer3/romW_7/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_7/z_reg[4]' is removed because it is merged to 'layer3/romW_7/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_4/z_reg[15]' is removed because it is merged to 'layer3/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_4/z_reg[14]' is removed because it is merged to 'layer3/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_4/z_reg[13]' is removed because it is merged to 'layer3/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_4/z_reg[12]' is removed because it is merged to 'layer3/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_4/z_reg[11]' is removed because it is merged to 'layer3/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_4/z_reg[10]' is removed because it is merged to 'layer3/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_4/z_reg[9]' is removed because it is merged to 'layer3/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_4/z_reg[8]' is removed because it is merged to 'layer3/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_4/z_reg[7]' is removed because it is merged to 'layer3/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_4/z_reg[6]' is removed because it is merged to 'layer3/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_4/z_reg[5]' is removed because it is merged to 'layer3/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_4/z_reg[4]' is removed because it is merged to 'layer3/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_16/z_reg[15]' is removed because it is merged to 'layer3/romW_16/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_16/z_reg[14]' is removed because it is merged to 'layer3/romW_16/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_16/z_reg[13]' is removed because it is merged to 'layer3/romW_16/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_16/z_reg[12]' is removed because it is merged to 'layer3/romW_16/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_16/z_reg[11]' is removed because it is merged to 'layer3/romW_16/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_16/z_reg[10]' is removed because it is merged to 'layer3/romW_16/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_16/z_reg[9]' is removed because it is merged to 'layer3/romW_16/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_16/z_reg[8]' is removed because it is merged to 'layer3/romW_16/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_16/z_reg[7]' is removed because it is merged to 'layer3/romW_16/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_16/z_reg[6]' is removed because it is merged to 'layer3/romW_16/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_16/z_reg[5]' is removed because it is merged to 'layer3/romW_16/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_16/z_reg[4]' is removed because it is merged to 'layer3/romW_16/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_2/z_reg[15]' is removed because it is merged to 'layer3/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_2/z_reg[14]' is removed because it is merged to 'layer3/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_2/z_reg[13]' is removed because it is merged to 'layer3/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_2/z_reg[12]' is removed because it is merged to 'layer3/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_2/z_reg[11]' is removed because it is merged to 'layer3/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_2/z_reg[10]' is removed because it is merged to 'layer3/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_2/z_reg[9]' is removed because it is merged to 'layer3/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_2/z_reg[8]' is removed because it is merged to 'layer3/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_2/z_reg[7]' is removed because it is merged to 'layer3/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_2/z_reg[6]' is removed because it is merged to 'layer3/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_2/z_reg[5]' is removed because it is merged to 'layer3/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_2/z_reg[4]' is removed because it is merged to 'layer3/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_10/z_reg[15]' is removed because it is merged to 'layer3/romW_10/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_10/z_reg[14]' is removed because it is merged to 'layer3/romW_10/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_10/z_reg[13]' is removed because it is merged to 'layer3/romW_10/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_10/z_reg[12]' is removed because it is merged to 'layer3/romW_10/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_10/z_reg[11]' is removed because it is merged to 'layer3/romW_10/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_10/z_reg[10]' is removed because it is merged to 'layer3/romW_10/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_10/z_reg[9]' is removed because it is merged to 'layer3/romW_10/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_10/z_reg[8]' is removed because it is merged to 'layer3/romW_10/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_10/z_reg[7]' is removed because it is merged to 'layer3/romW_10/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_10/z_reg[6]' is removed because it is merged to 'layer3/romW_10/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_10/z_reg[5]' is removed because it is merged to 'layer3/romW_10/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_10/z_reg[4]' is removed because it is merged to 'layer3/romW_10/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_15/z_reg[15]' is removed because it is merged to 'layer3/romW_15/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_15/z_reg[14]' is removed because it is merged to 'layer3/romW_15/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_15/z_reg[13]' is removed because it is merged to 'layer3/romW_15/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_15/z_reg[12]' is removed because it is merged to 'layer3/romW_15/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_15/z_reg[11]' is removed because it is merged to 'layer3/romW_15/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_15/z_reg[10]' is removed because it is merged to 'layer3/romW_15/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_15/z_reg[9]' is removed because it is merged to 'layer3/romW_15/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_15/z_reg[8]' is removed because it is merged to 'layer3/romW_15/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_15/z_reg[7]' is removed because it is merged to 'layer3/romW_15/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_15/z_reg[6]' is removed because it is merged to 'layer3/romW_15/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_15/z_reg[5]' is removed because it is merged to 'layer3/romW_15/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_15/z_reg[4]' is removed because it is merged to 'layer3/romW_15/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_3/z_reg[15]' is removed because it is merged to 'layer3/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_3/z_reg[14]' is removed because it is merged to 'layer3/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_3/z_reg[13]' is removed because it is merged to 'layer3/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_3/z_reg[12]' is removed because it is merged to 'layer3/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_3/z_reg[11]' is removed because it is merged to 'layer3/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_3/z_reg[10]' is removed because it is merged to 'layer3/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_3/z_reg[9]' is removed because it is merged to 'layer3/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_3/z_reg[8]' is removed because it is merged to 'layer3/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_3/z_reg[7]' is removed because it is merged to 'layer3/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_3/z_reg[6]' is removed because it is merged to 'layer3/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_3/z_reg[5]' is removed because it is merged to 'layer3/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_3/z_reg[4]' is removed because it is merged to 'layer3/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_9/z_reg[15]' is removed because it is merged to 'layer3/romW_9/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_9/z_reg[14]' is removed because it is merged to 'layer3/romW_9/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_9/z_reg[13]' is removed because it is merged to 'layer3/romW_9/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_9/z_reg[12]' is removed because it is merged to 'layer3/romW_9/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_9/z_reg[11]' is removed because it is merged to 'layer3/romW_9/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_9/z_reg[10]' is removed because it is merged to 'layer3/romW_9/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_9/z_reg[9]' is removed because it is merged to 'layer3/romW_9/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_9/z_reg[8]' is removed because it is merged to 'layer3/romW_9/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_9/z_reg[7]' is removed because it is merged to 'layer3/romW_9/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_9/z_reg[6]' is removed because it is merged to 'layer3/romW_9/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_9/z_reg[5]' is removed because it is merged to 'layer3/romW_9/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_9/z_reg[4]' is removed because it is merged to 'layer3/romW_9/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_1/z_reg[15]' is removed because it is merged to 'layer3/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_1/z_reg[14]' is removed because it is merged to 'layer3/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_1/z_reg[13]' is removed because it is merged to 'layer3/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_1/z_reg[12]' is removed because it is merged to 'layer3/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_1/z_reg[11]' is removed because it is merged to 'layer3/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_1/z_reg[10]' is removed because it is merged to 'layer3/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_1/z_reg[9]' is removed because it is merged to 'layer3/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_1/z_reg[8]' is removed because it is merged to 'layer3/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_1/z_reg[7]' is removed because it is merged to 'layer3/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_1/z_reg[6]' is removed because it is merged to 'layer3/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_1/z_reg[5]' is removed because it is merged to 'layer3/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_1/z_reg[4]' is removed because it is merged to 'layer3/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_6/z_reg[15]' is removed because it is merged to 'layer3/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_6/z_reg[14]' is removed because it is merged to 'layer3/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_6/z_reg[13]' is removed because it is merged to 'layer3/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_6/z_reg[12]' is removed because it is merged to 'layer3/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_6/z_reg[11]' is removed because it is merged to 'layer3/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_6/z_reg[10]' is removed because it is merged to 'layer3/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_6/z_reg[9]' is removed because it is merged to 'layer3/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_6/z_reg[8]' is removed because it is merged to 'layer3/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_6/z_reg[7]' is removed because it is merged to 'layer3/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_6/z_reg[6]' is removed because it is merged to 'layer3/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_6/z_reg[5]' is removed because it is merged to 'layer3/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_6/z_reg[4]' is removed because it is merged to 'layer3/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_12/z_reg[15]' is removed because it is merged to 'layer3/romW_12/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_12/z_reg[14]' is removed because it is merged to 'layer3/romW_12/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_12/z_reg[13]' is removed because it is merged to 'layer3/romW_12/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_12/z_reg[12]' is removed because it is merged to 'layer3/romW_12/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_12/z_reg[11]' is removed because it is merged to 'layer3/romW_12/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_12/z_reg[10]' is removed because it is merged to 'layer3/romW_12/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_12/z_reg[9]' is removed because it is merged to 'layer3/romW_12/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_12/z_reg[8]' is removed because it is merged to 'layer3/romW_12/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_12/z_reg[7]' is removed because it is merged to 'layer3/romW_12/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_12/z_reg[6]' is removed because it is merged to 'layer3/romW_12/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_12/z_reg[5]' is removed because it is merged to 'layer3/romW_12/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_12/z_reg[4]' is removed because it is merged to 'layer3/romW_12/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_11/z_reg[15]' is removed because it is merged to 'layer3/romW_11/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_11/z_reg[14]' is removed because it is merged to 'layer3/romW_11/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_11/z_reg[13]' is removed because it is merged to 'layer3/romW_11/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_11/z_reg[12]' is removed because it is merged to 'layer3/romW_11/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_11/z_reg[11]' is removed because it is merged to 'layer3/romW_11/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_11/z_reg[10]' is removed because it is merged to 'layer3/romW_11/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_11/z_reg[9]' is removed because it is merged to 'layer3/romW_11/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_11/z_reg[8]' is removed because it is merged to 'layer3/romW_11/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_11/z_reg[7]' is removed because it is merged to 'layer3/romW_11/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_11/z_reg[6]' is removed because it is merged to 'layer3/romW_11/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_11/z_reg[5]' is removed because it is merged to 'layer3/romW_11/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_11/z_reg[4]' is removed because it is merged to 'layer3/romW_11/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_8/z_reg[15]' is removed because it is merged to 'layer3/romW_8/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_8/z_reg[14]' is removed because it is merged to 'layer3/romW_8/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_8/z_reg[13]' is removed because it is merged to 'layer3/romW_8/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_8/z_reg[12]' is removed because it is merged to 'layer3/romW_8/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_8/z_reg[11]' is removed because it is merged to 'layer3/romW_8/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_8/z_reg[10]' is removed because it is merged to 'layer3/romW_8/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_8/z_reg[9]' is removed because it is merged to 'layer3/romW_8/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_8/z_reg[8]' is removed because it is merged to 'layer3/romW_8/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_8/z_reg[7]' is removed because it is merged to 'layer3/romW_8/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_8/z_reg[6]' is removed because it is merged to 'layer3/romW_8/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_8/z_reg[5]' is removed because it is merged to 'layer3/romW_8/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_8/z_reg[4]' is removed because it is merged to 'layer3/romW_8/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_5/z_reg[15]' is removed because it is merged to 'layer3/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_5/z_reg[14]' is removed because it is merged to 'layer3/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_5/z_reg[13]' is removed because it is merged to 'layer3/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_5/z_reg[12]' is removed because it is merged to 'layer3/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_5/z_reg[11]' is removed because it is merged to 'layer3/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_5/z_reg[10]' is removed because it is merged to 'layer3/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_5/z_reg[9]' is removed because it is merged to 'layer3/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_5/z_reg[8]' is removed because it is merged to 'layer3/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_5/z_reg[7]' is removed because it is merged to 'layer3/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_5/z_reg[6]' is removed because it is merged to 'layer3/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_5/z_reg[5]' is removed because it is merged to 'layer3/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/romW_5/z_reg[4]' is removed because it is merged to 'layer3/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_6/z_reg[15]' is removed because it is merged to 'layer2/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_6/z_reg[14]' is removed because it is merged to 'layer2/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_6/z_reg[13]' is removed because it is merged to 'layer2/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_6/z_reg[12]' is removed because it is merged to 'layer2/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_6/z_reg[11]' is removed because it is merged to 'layer2/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_6/z_reg[10]' is removed because it is merged to 'layer2/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_6/z_reg[9]' is removed because it is merged to 'layer2/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_6/z_reg[8]' is removed because it is merged to 'layer2/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_6/z_reg[7]' is removed because it is merged to 'layer2/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_6/z_reg[6]' is removed because it is merged to 'layer2/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_6/z_reg[5]' is removed because it is merged to 'layer2/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_6/z_reg[4]' is removed because it is merged to 'layer2/romW_6/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_5/z_reg[15]' is removed because it is merged to 'layer2/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_5/z_reg[14]' is removed because it is merged to 'layer2/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_5/z_reg[13]' is removed because it is merged to 'layer2/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_5/z_reg[12]' is removed because it is merged to 'layer2/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_5/z_reg[11]' is removed because it is merged to 'layer2/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_5/z_reg[10]' is removed because it is merged to 'layer2/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_5/z_reg[9]' is removed because it is merged to 'layer2/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_5/z_reg[8]' is removed because it is merged to 'layer2/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_5/z_reg[7]' is removed because it is merged to 'layer2/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_5/z_reg[6]' is removed because it is merged to 'layer2/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_5/z_reg[5]' is removed because it is merged to 'layer2/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_5/z_reg[4]' is removed because it is merged to 'layer2/romW_5/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_3/z_reg[15]' is removed because it is merged to 'layer2/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_3/z_reg[14]' is removed because it is merged to 'layer2/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_3/z_reg[13]' is removed because it is merged to 'layer2/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_3/z_reg[12]' is removed because it is merged to 'layer2/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_3/z_reg[11]' is removed because it is merged to 'layer2/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_3/z_reg[10]' is removed because it is merged to 'layer2/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_3/z_reg[9]' is removed because it is merged to 'layer2/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_3/z_reg[8]' is removed because it is merged to 'layer2/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_3/z_reg[7]' is removed because it is merged to 'layer2/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_3/z_reg[6]' is removed because it is merged to 'layer2/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_3/z_reg[5]' is removed because it is merged to 'layer2/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_3/z_reg[4]' is removed because it is merged to 'layer2/romW_3/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_4/z_reg[15]' is removed because it is merged to 'layer2/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_4/z_reg[14]' is removed because it is merged to 'layer2/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_4/z_reg[13]' is removed because it is merged to 'layer2/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_4/z_reg[12]' is removed because it is merged to 'layer2/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_4/z_reg[11]' is removed because it is merged to 'layer2/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_4/z_reg[10]' is removed because it is merged to 'layer2/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_4/z_reg[9]' is removed because it is merged to 'layer2/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_4/z_reg[8]' is removed because it is merged to 'layer2/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_4/z_reg[7]' is removed because it is merged to 'layer2/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_4/z_reg[6]' is removed because it is merged to 'layer2/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_4/z_reg[5]' is removed because it is merged to 'layer2/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_4/z_reg[4]' is removed because it is merged to 'layer2/romW_4/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_2/z_reg[15]' is removed because it is merged to 'layer2/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_2/z_reg[14]' is removed because it is merged to 'layer2/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_2/z_reg[13]' is removed because it is merged to 'layer2/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_2/z_reg[12]' is removed because it is merged to 'layer2/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_2/z_reg[11]' is removed because it is merged to 'layer2/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_2/z_reg[10]' is removed because it is merged to 'layer2/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_2/z_reg[9]' is removed because it is merged to 'layer2/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_2/z_reg[8]' is removed because it is merged to 'layer2/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_2/z_reg[7]' is removed because it is merged to 'layer2/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_2/z_reg[6]' is removed because it is merged to 'layer2/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_2/z_reg[5]' is removed because it is merged to 'layer2/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_2/z_reg[4]' is removed because it is merged to 'layer2/romW_2/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_1/z_reg[15]' is removed because it is merged to 'layer2/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_1/z_reg[14]' is removed because it is merged to 'layer2/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_1/z_reg[13]' is removed because it is merged to 'layer2/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_1/z_reg[12]' is removed because it is merged to 'layer2/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_1/z_reg[11]' is removed because it is merged to 'layer2/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_1/z_reg[10]' is removed because it is merged to 'layer2/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_1/z_reg[9]' is removed because it is merged to 'layer2/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_1/z_reg[8]' is removed because it is merged to 'layer2/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_1/z_reg[7]' is removed because it is merged to 'layer2/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_1/z_reg[6]' is removed because it is merged to 'layer2/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_1/z_reg[5]' is removed because it is merged to 'layer2/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/romW_1/z_reg[4]' is removed because it is merged to 'layer2/romW_1/z_reg[3]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_8/z_reg[14]' is removed because it is merged to 'layer1/romW_8/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_8/z_reg[13]' is removed because it is merged to 'layer1/romW_8/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_8/z_reg[12]' is removed because it is merged to 'layer1/romW_8/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_8/z_reg[11]' is removed because it is merged to 'layer1/romW_8/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_8/z_reg[10]' is removed because it is merged to 'layer1/romW_8/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_8/z_reg[9]' is removed because it is merged to 'layer1/romW_8/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_8/z_reg[8]' is removed because it is merged to 'layer1/romW_8/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_8/z_reg[7]' is removed because it is merged to 'layer1/romW_8/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_8/z_reg[6]' is removed because it is merged to 'layer1/romW_8/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_8/z_reg[5]' is removed because it is merged to 'layer1/romW_8/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_8/z_reg[4]' is removed because it is merged to 'layer1/romW_8/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_8/z_reg[3]' is removed because it is merged to 'layer1/romW_8/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_8/z_reg[0]' is removed because it is merged to 'layer1/romW_8/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_7/z_reg[14]' is removed because it is merged to 'layer1/romW_7/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_7/z_reg[13]' is removed because it is merged to 'layer1/romW_7/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_7/z_reg[12]' is removed because it is merged to 'layer1/romW_7/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_7/z_reg[11]' is removed because it is merged to 'layer1/romW_7/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_7/z_reg[10]' is removed because it is merged to 'layer1/romW_7/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_7/z_reg[9]' is removed because it is merged to 'layer1/romW_7/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_7/z_reg[8]' is removed because it is merged to 'layer1/romW_7/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_7/z_reg[7]' is removed because it is merged to 'layer1/romW_7/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_7/z_reg[6]' is removed because it is merged to 'layer1/romW_7/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_7/z_reg[5]' is removed because it is merged to 'layer1/romW_7/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_7/z_reg[4]' is removed because it is merged to 'layer1/romW_7/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_7/z_reg[3]' is removed because it is merged to 'layer1/romW_7/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_6/z_reg[14]' is removed because it is merged to 'layer1/romW_6/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_6/z_reg[13]' is removed because it is merged to 'layer1/romW_6/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_6/z_reg[12]' is removed because it is merged to 'layer1/romW_6/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_6/z_reg[11]' is removed because it is merged to 'layer1/romW_6/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_6/z_reg[10]' is removed because it is merged to 'layer1/romW_6/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_6/z_reg[9]' is removed because it is merged to 'layer1/romW_6/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_6/z_reg[8]' is removed because it is merged to 'layer1/romW_6/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_6/z_reg[7]' is removed because it is merged to 'layer1/romW_6/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_6/z_reg[6]' is removed because it is merged to 'layer1/romW_6/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_6/z_reg[5]' is removed because it is merged to 'layer1/romW_6/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_6/z_reg[4]' is removed because it is merged to 'layer1/romW_6/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_6/z_reg[3]' is removed because it is merged to 'layer1/romW_6/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_6/z_reg[1]' is removed because it is merged to 'layer1/romW_6/z_reg[2]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_6/z_reg[0]' is removed because it is merged to 'layer1/romW_6/z_reg[2]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_5/z_reg[14]' is removed because it is merged to 'layer1/romW_5/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_5/z_reg[13]' is removed because it is merged to 'layer1/romW_5/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_5/z_reg[12]' is removed because it is merged to 'layer1/romW_5/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_5/z_reg[11]' is removed because it is merged to 'layer1/romW_5/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_5/z_reg[10]' is removed because it is merged to 'layer1/romW_5/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_5/z_reg[9]' is removed because it is merged to 'layer1/romW_5/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_5/z_reg[8]' is removed because it is merged to 'layer1/romW_5/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_5/z_reg[7]' is removed because it is merged to 'layer1/romW_5/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_5/z_reg[6]' is removed because it is merged to 'layer1/romW_5/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_5/z_reg[5]' is removed because it is merged to 'layer1/romW_5/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_5/z_reg[4]' is removed because it is merged to 'layer1/romW_5/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_5/z_reg[3]' is removed because it is merged to 'layer1/romW_5/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_5/z_reg[0]' is removed because it is merged to 'layer1/romW_5/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_4/z_reg[14]' is removed because it is merged to 'layer1/romW_4/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_4/z_reg[13]' is removed because it is merged to 'layer1/romW_4/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_4/z_reg[12]' is removed because it is merged to 'layer1/romW_4/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_4/z_reg[11]' is removed because it is merged to 'layer1/romW_4/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_4/z_reg[10]' is removed because it is merged to 'layer1/romW_4/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_4/z_reg[9]' is removed because it is merged to 'layer1/romW_4/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_4/z_reg[8]' is removed because it is merged to 'layer1/romW_4/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_4/z_reg[7]' is removed because it is merged to 'layer1/romW_4/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_4/z_reg[6]' is removed because it is merged to 'layer1/romW_4/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_4/z_reg[5]' is removed because it is merged to 'layer1/romW_4/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_4/z_reg[4]' is removed because it is merged to 'layer1/romW_4/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_4/z_reg[3]' is removed because it is merged to 'layer1/romW_4/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_3/z_reg[14]' is removed because it is merged to 'layer1/romW_3/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_3/z_reg[13]' is removed because it is merged to 'layer1/romW_3/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_3/z_reg[12]' is removed because it is merged to 'layer1/romW_3/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_3/z_reg[11]' is removed because it is merged to 'layer1/romW_3/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_3/z_reg[10]' is removed because it is merged to 'layer1/romW_3/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_3/z_reg[9]' is removed because it is merged to 'layer1/romW_3/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_3/z_reg[8]' is removed because it is merged to 'layer1/romW_3/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_3/z_reg[7]' is removed because it is merged to 'layer1/romW_3/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_3/z_reg[6]' is removed because it is merged to 'layer1/romW_3/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_3/z_reg[5]' is removed because it is merged to 'layer1/romW_3/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_3/z_reg[4]' is removed because it is merged to 'layer1/romW_3/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_3/z_reg[3]' is removed because it is merged to 'layer1/romW_3/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_3/z_reg[0]' is removed because it is merged to 'layer1/romW_3/z_reg[1]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_2/z_reg[14]' is removed because it is merged to 'layer1/romW_2/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_2/z_reg[13]' is removed because it is merged to 'layer1/romW_2/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_2/z_reg[12]' is removed because it is merged to 'layer1/romW_2/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_2/z_reg[11]' is removed because it is merged to 'layer1/romW_2/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_2/z_reg[10]' is removed because it is merged to 'layer1/romW_2/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_2/z_reg[9]' is removed because it is merged to 'layer1/romW_2/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_2/z_reg[8]' is removed because it is merged to 'layer1/romW_2/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_2/z_reg[7]' is removed because it is merged to 'layer1/romW_2/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_2/z_reg[6]' is removed because it is merged to 'layer1/romW_2/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_2/z_reg[5]' is removed because it is merged to 'layer1/romW_2/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_2/z_reg[4]' is removed because it is merged to 'layer1/romW_2/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_2/z_reg[3]' is removed because it is merged to 'layer1/romW_2/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_2/z_reg[0]' is removed because it is merged to 'layer1/romW_2/z_reg[2]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_1/z_reg[14]' is removed because it is merged to 'layer1/romW_1/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_1/z_reg[13]' is removed because it is merged to 'layer1/romW_1/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_1/z_reg[12]' is removed because it is merged to 'layer1/romW_1/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_1/z_reg[11]' is removed because it is merged to 'layer1/romW_1/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_1/z_reg[10]' is removed because it is merged to 'layer1/romW_1/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_1/z_reg[9]' is removed because it is merged to 'layer1/romW_1/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_1/z_reg[8]' is removed because it is merged to 'layer1/romW_1/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_1/z_reg[7]' is removed because it is merged to 'layer1/romW_1/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_1/z_reg[6]' is removed because it is merged to 'layer1/romW_1/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_1/z_reg[5]' is removed because it is merged to 'layer1/romW_1/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_1/z_reg[4]' is removed because it is merged to 'layer1/romW_1/z_reg[15]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/romW_1/z_reg[3]' is removed because it is merged to 'layer1/romW_1/z_reg[15]'. (OPT-1215)
+Information: The register 'layer3/control_l3_fc3_16_12_16_1_16/countACC/regOut_reg[0]' will be removed. (OPT-1207)
+Information: The register 'layer2/control_l2_fc2_12_8_16_1_6/countACC/regOut_reg[1]' will be removed. (OPT-1207)
+Information: The register 'layer2/control_l2_fc2_12_8_16_1_6/countACC/regOut_reg[0]' will be removed. (OPT-1207)
+Information: The register 'layer1/control_l1_fc1_8_4_16_1_8/countACC/regOut_reg[0]' will be removed. (OPT-1207)
+ Implement Synthetic for 'net_4_8_12_16_16_1_30'.
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The register 'layer2/memV_l2_fc2_12_8_16_1_6/mem_reg[7][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer2/memV_l2_fc2_12_8_16_1_6/mem_reg[3][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer2/memV_l2_fc2_12_8_16_1_6/mem_reg[6][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer2/memV_l2_fc2_12_8_16_1_6/mem_reg[5][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer2/memV_l2_fc2_12_8_16_1_6/mem_reg[4][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer2/memV_l2_fc2_12_8_16_1_6/mem_reg[1][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer2/memV_l2_fc2_12_8_16_1_6/mem_reg[0][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer2/memV_l2_fc2_12_8_16_1_6/mem_reg[2][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer2/memV_l2_fc2_12_8_16_1_6/data_out_reg[15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer3/memV_l3_fc3_16_12_16_1_16/mem_reg[11][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer3/memV_l3_fc3_16_12_16_1_16/mem_reg[10][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer3/memV_l3_fc3_16_12_16_1_16/mem_reg[9][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer3/memV_l3_fc3_16_12_16_1_16/mem_reg[8][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer3/memV_l3_fc3_16_12_16_1_16/mem_reg[7][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer3/memV_l3_fc3_16_12_16_1_16/mem_reg[6][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer3/memV_l3_fc3_16_12_16_1_16/mem_reg[5][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer3/memV_l3_fc3_16_12_16_1_16/mem_reg[4][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer3/memV_l3_fc3_16_12_16_1_16/mem_reg[3][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer3/memV_l3_fc3_16_12_16_1_16/mem_reg[1][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer3/memV_l3_fc3_16_12_16_1_16/mem_reg[2][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer3/memV_l3_fc3_16_12_16_1_16/mem_reg[0][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'layer3/memV_l3_fc3_16_12_16_1_16/data_out_reg[15]' is a constant and will be removed. (OPT-1206)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/dp_3_l1_fc1_8_4_16_1_8/reg_C1/q_reg[0]' is removed because it is merged to 'layer1/dp_2_l1_fc1_8_4_16_1_8/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/dp_4_l1_fc1_8_4_16_1_8/reg_C1/q_reg[0]' is removed because it is merged to 'layer1/dp_2_l1_fc1_8_4_16_1_8/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/dp_5_l1_fc1_8_4_16_1_8/reg_C1/q_reg[0]' is removed because it is merged to 'layer1/dp_2_l1_fc1_8_4_16_1_8/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/dp_6_l1_fc1_8_4_16_1_8/reg_C1/q_reg[0]' is removed because it is merged to 'layer1/dp_2_l1_fc1_8_4_16_1_8/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/dp_7_l1_fc1_8_4_16_1_8/reg_C1/q_reg[0]' is removed because it is merged to 'layer1/dp_2_l1_fc1_8_4_16_1_8/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/dp_8_l1_fc1_8_4_16_1_8/reg_C1/q_reg[0]' is removed because it is merged to 'layer1/dp_2_l1_fc1_8_4_16_1_8/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/dp_1_l1_fc1_8_4_16_1_8/reg_C1/q_reg[0]' is removed because it is merged to 'layer1/dp_2_l1_fc1_8_4_16_1_8/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/dp_2_l2_fc2_12_8_16_1_6/reg_C1/q_reg[0]' is removed because it is merged to 'layer2/dp_1_l2_fc2_12_8_16_1_6/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/dp_3_l2_fc2_12_8_16_1_6/reg_C1/q_reg[0]' is removed because it is merged to 'layer2/dp_1_l2_fc2_12_8_16_1_6/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/dp_4_l2_fc2_12_8_16_1_6/reg_C1/q_reg[0]' is removed because it is merged to 'layer2/dp_1_l2_fc2_12_8_16_1_6/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/dp_5_l2_fc2_12_8_16_1_6/reg_C1/q_reg[0]' is removed because it is merged to 'layer2/dp_1_l2_fc2_12_8_16_1_6/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/dp_6_l2_fc2_12_8_16_1_6/reg_C1/q_reg[0]' is removed because it is merged to 'layer2/dp_1_l2_fc2_12_8_16_1_6/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_2_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]' is removed because it is merged to 'layer3/dp_1_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_3_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]' is removed because it is merged to 'layer3/dp_1_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_4_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]' is removed because it is merged to 'layer3/dp_1_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_5_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]' is removed because it is merged to 'layer3/dp_1_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_6_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]' is removed because it is merged to 'layer3/dp_1_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_7_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]' is removed because it is merged to 'layer3/dp_1_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_8_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]' is removed because it is merged to 'layer3/dp_1_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_9_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]' is removed because it is merged to 'layer3/dp_1_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_10_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]' is removed because it is merged to 'layer3/dp_1_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_11_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]' is removed because it is merged to 'layer3/dp_1_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_12_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]' is removed because it is merged to 'layer3/dp_1_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_13_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]' is removed because it is merged to 'layer3/dp_1_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_14_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]' is removed because it is merged to 'layer3/dp_1_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_15_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]' is removed because it is merged to 'layer3/dp_1_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_16_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]' is removed because it is merged to 'layer3/dp_1_l3_fc3_16_12_16_1_16/reg_C1/q_reg[0]'. (OPT-1215)
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_12_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]' is removed because it is merged to 'layer3/dp_3_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_14_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]' is removed because it is merged to 'layer3/dp_3_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_9_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]' is removed because it is merged to 'layer3/dp_3_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_10_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]' is removed because it is merged to 'layer3/dp_3_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_2_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]' is removed because it is merged to 'layer3/dp_3_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_11_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]' is removed because it is merged to 'layer3/dp_3_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_6_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]' is removed because it is merged to 'layer3/dp_3_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_1_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]' is removed because it is merged to 'layer3/dp_3_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_5_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]' is removed because it is merged to 'layer3/dp_3_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_16_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]' is removed because it is merged to 'layer3/dp_3_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_4_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]' is removed because it is merged to 'layer3/dp_3_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_15_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]' is removed because it is merged to 'layer3/dp_3_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_8_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]' is removed because it is merged to 'layer3/dp_3_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_13_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]' is removed because it is merged to 'layer3/dp_3_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer3/dp_7_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]' is removed because it is merged to 'layer3/dp_3_l3_fc3_16_12_16_1_16/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/dp_1_l2_fc2_12_8_16_1_6/reg_C2/q_reg[0]' is removed because it is merged to 'layer2/dp_5_l2_fc2_12_8_16_1_6/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/dp_6_l2_fc2_12_8_16_1_6/reg_C2/q_reg[0]' is removed because it is merged to 'layer2/dp_5_l2_fc2_12_8_16_1_6/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/dp_4_l2_fc2_12_8_16_1_6/reg_C2/q_reg[0]' is removed because it is merged to 'layer2/dp_5_l2_fc2_12_8_16_1_6/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/dp_2_l2_fc2_12_8_16_1_6/reg_C2/q_reg[0]' is removed because it is merged to 'layer2/dp_5_l2_fc2_12_8_16_1_6/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer2/dp_3_l2_fc2_12_8_16_1_6/reg_C2/q_reg[0]' is removed because it is merged to 'layer2/dp_5_l2_fc2_12_8_16_1_6/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/dp_1_l1_fc1_8_4_16_1_8/reg_C2/q_reg[0]' is removed because it is merged to 'layer1/dp_6_l1_fc1_8_4_16_1_8/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/dp_8_l1_fc1_8_4_16_1_8/reg_C2/q_reg[0]' is removed because it is merged to 'layer1/dp_6_l1_fc1_8_4_16_1_8/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/dp_7_l1_fc1_8_4_16_1_8/reg_C2/q_reg[0]' is removed because it is merged to 'layer1/dp_6_l1_fc1_8_4_16_1_8/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/dp_4_l1_fc1_8_4_16_1_8/reg_C2/q_reg[0]' is removed because it is merged to 'layer1/dp_6_l1_fc1_8_4_16_1_8/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/dp_2_l1_fc1_8_4_16_1_8/reg_C2/q_reg[0]' is removed because it is merged to 'layer1/dp_6_l1_fc1_8_4_16_1_8/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/dp_5_l1_fc1_8_4_16_1_8/reg_C2/q_reg[0]' is removed because it is merged to 'layer1/dp_6_l1_fc1_8_4_16_1_8/reg_C2/q_reg[0]'. (OPT-1215)
+Information: In design 'net_4_8_12_16_16_1_30', the register 'layer1/dp_3_l1_fc1_8_4_16_1_8/reg_C2/q_reg[0]' is removed because it is merged to 'layer1/dp_6_l1_fc1_8_4_16_1_8/reg_C2/q_reg[0]'. (OPT-1215)
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:20   36308.7      0.36     357.8     205.7                           974965.5625
+    0:00:20   35627.0      0.42     364.0    1103.2                           954452.5000
+
+  Beginning Constant Register Removal
+  -----------------------------------
+    0:00:21   36181.9      1.08     542.1      32.4                           983934.6250
+    0:00:21   36181.9      1.08     542.1      32.4                           983934.6250
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+  Global Optimization (Phase 31)
+  Mapping 'net_4_8_12_16_16_1_30_DW01_add_30'
+
+  Beginning Isolate Ports
+  -----------------------
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:24   24111.3      0.27     141.3     126.4                           538437.9375
+    0:00:31   24785.1      0.11      91.5     126.4                           566116.6250
+    0:00:31   24785.1      0.11      91.5     126.4                           566116.6250
+    0:00:31   24827.1      0.11      91.7     126.4                           565788.0000
+    0:00:32   24521.2      0.11      74.5     126.4                           558436.8750
+    0:00:33   24504.2      0.11      74.9     126.4                           558085.8750
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:00:34   23767.9      0.11      59.6     123.4                           530819.2500
+    0:00:34   23617.6      0.11      59.7     123.4                           525362.8750
+    0:00:34   23614.1      0.11      58.8     123.4                           525106.8750
+    0:00:34   23614.1      0.11      58.8     123.4                           525106.8750
+    0:00:35   23435.7      0.10      55.3     123.4                           512210.4375
+    0:00:35   23435.7      0.10      55.3     123.4                           512210.4375
+    0:00:40   24023.3      0.08      29.4     123.4                           530105.1875
+    0:00:40   24023.3      0.08      29.4     123.4                           530105.1875
+    0:00:40   24035.5      0.08      29.1     123.4                           530878.8750
+    0:00:40   24035.5      0.08      29.1     123.4                           530878.8750
+    0:00:45   24448.9      0.06      15.3     123.4                           543551.5000
+    0:00:45   24448.9      0.06      15.3     123.4                           543551.5000
+    0:00:45   24485.3      0.04      11.9     123.4                           546070.1250
+    0:00:45   24485.3      0.04      11.9     123.4                           546070.1250
+    0:00:46   24485.3      0.04      11.9     123.4                           546070.1250
+    0:00:46   24485.3      0.04      11.9     123.4                           546070.1250
+    0:00:46   24485.3      0.04      11.9     123.4                           546070.1250
+    0:00:46   24485.3      0.04      11.9     123.4                           546070.1250
+    0:00:46   24485.3      0.04      11.9     123.4                           546070.1250
+    0:00:46   24485.3      0.04      11.9     123.4                           546070.1250
+    0:00:46   24485.3      0.04      11.9     123.4                           546070.1250
+    0:00:46   24485.3      0.04      11.9     123.4                           546070.1250
+    0:00:46   24485.3      0.04      11.9     123.4                           546070.1250
+
+
+  Beginning Design Rule Fixing  (max_capacitance)
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:46   24485.3      0.04      11.9     123.4                           546070.1250
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+    0:00:47   24572.8      0.02       5.6       0.0 layer2/dp_3_l2_fc2_12_8_16_1_6/reg_C3/q_reg[13]/D 548812.5000
+    0:00:47   24602.6      0.01       2.1       0.0                           549667.5000
+    0:00:48   24672.8      0.01       1.6       0.0                           551853.7500
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:48   24672.8      0.01       1.6       0.0                           551853.7500
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+  Global Optimization (Phase 44)
+  Global Optimization (Phase 45)
+  Global Optimization (Phase 46)
+  Global Optimization (Phase 47)
+  Global Optimization (Phase 48)
+  Global Optimization (Phase 49)
+    0:00:49   23780.9      0.00       0.0       0.0                           512449.9062
+    0:00:49   23780.9      0.00       0.0       0.0                           512449.9062
+    0:00:49   23780.9      0.00       0.0       0.0                           512449.9062
+    0:00:50   23771.1      0.00       0.0       0.0                           511966.3438
+    0:00:50   23771.1      0.00       0.0       0.0                           511966.3438
+    0:00:50   23771.1      0.00       0.0       0.0                           511966.3438
+    0:00:50   23771.1      0.00       0.0       0.0                           511966.3438
+    0:00:50   23771.1      0.00       0.0       0.0                           511966.3438
+    0:00:50   23771.1      0.00       0.0       0.0                           511966.3438
+    0:00:50   23771.1      0.00       0.0       0.0                           511966.3438
+    0:00:50   23771.1      0.00       0.0       0.0                           511966.3438
+    0:00:50   23771.1      0.00       0.0       0.0                           511966.3438
+    0:00:50   23771.1      0.00       0.0       0.0                           511966.3438
+    0:00:50   23771.1      0.00       0.0       0.0                           511966.3438
+    0:00:50   23771.1      0.00       0.0       0.0                           511966.3438
+    0:00:50   23771.1      0.00       0.0       0.0                           511966.3438
+    0:00:50   23771.1      0.00       0.0       0.0                           511966.3438
+    0:00:50   23771.1      0.00       0.0       0.0                           511966.3438
+    0:00:50   23771.1      0.00       0.0       0.0                           511966.3438
+    0:00:50   23771.1      0.00       0.0       0.0                           511966.3438
+    0:00:50   23771.1      0.00       0.0       0.0                           511966.3438
+    0:00:50   23771.1      0.00       0.0       0.0                           511966.3438
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:50   23771.1      0.00       0.0       0.0                           511966.3438
+    0:00:51   23637.6      0.01       0.4       0.0                           506378.2500
+    0:00:51   23650.9      0.00       0.0       0.0                           506912.8750
+    0:00:51   23650.9      0.00       0.0       0.0                           506912.8750
+    0:00:51   23650.9      0.00       0.0       0.0                           506912.8750
+    0:00:52   23614.1      0.00       0.0       0.0                           505370.6250
+    0:00:52   23614.1      0.00       0.0       0.0                           505370.6250
+    0:00:52   23614.1      0.00       0.0       0.0                           505370.6250
+    0:00:52   23614.1      0.00       0.0       0.0                           505370.6250
+    0:00:52   23614.1      0.00       0.0       0.0                           505370.6250
+    0:00:52   23614.1      0.00       0.0       0.0                           505370.6250
+    0:00:52   23581.7      0.00       0.0       2.0                           503367.2500
+Loading db file '/home/home4/pmilder/ese507/synthesis/lib/NangateOpenCellLibrary_typical.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Warning: Design 'net_4_8_12_16_16_1_30' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'clk': 1560 load(s), 1 driver(s)
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+1
+report_area
+ 
+****************************************
+Report : area
+Design : net_4_8_12_16_16_1_30
+Version: S-2021.06-SP5-4
+Date   : Fri Dec  2 14:23:54 2022
+****************************************
+
+Information: Updating design information... (UID-85)
+Warning: Design 'net_4_8_12_16_16_1_30' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /home/home4/pmilder/ese507/synthesis/lib/NangateOpenCellLibrary_typical.db)
+
+Number of ports:                           38
+Number of nets:                         18131
+Number of cells:                        16941
+Number of combinational cells:          15314
+Number of sequential cells:              1560
+Number of macros/black boxes:               0
+Number of buf/inv:                       1817
+Number of references:                      61
+
+Combinational area:              16457.153973
+Buf/Inv area:                     1014.790007
+Noncombinational area:            7124.543766
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:                 23581.697740
+Total area:                 undefined
+1
+report_power
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : net_4_8_12_16_16_1_30
+Version: S-2021.06-SP5-4
+Date   : Fri Dec  2 14:23:54 2022
+****************************************
+
+
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /home/home4/pmilder/ese507/synthesis/lib/NangateOpenCellLibrary_typical.db)
+
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+Design        Wire Load Model            Library
+------------------------------------------------
+net_4_8_12_16_16_1_30  5K_hvratio_1_1    NangateOpenCellLibrary
+
+
+Global Operating Voltage = 1.1  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+  Cell Internal Power  =  10.0759 mW   (93%)
+  Net Switching Power  = 775.2214 uW    (7%)
+                         ---------
+Total Dynamic Power    =  10.8512 mW  (100%)
+
+Cell Leakage Power     = 532.7181 uW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
+register       9.5172e+03          126.2021        1.2252e+05        9.7660e+03  (  85.79%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational    558.7230          649.0160        4.1020e+05        1.6179e+03  (  14.21%)
+--------------------------------------------------------------------------------------------------
+Total          1.0076e+04 uW       775.2181 uW     5.3272e+05 nW     1.1384e+04 uW
+1
+report_timing
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : net_4_8_12_16_16_1_30
+Version: S-2021.06-SP5-4
+Date   : Fri Dec  2 14:23:54 2022
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: layer1/romW_8/z_reg[15]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: layer1/dp_8_l1_fc1_8_4_16_1_8/reg_C3/q_reg[5]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  net_4_8_12_16_16_1_30
+                     5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  layer1/romW_8/z_reg[15]/CK (DFF_X1)                     0.00 #     0.00 r
+  layer1/romW_8/z_reg[15]/Q (DFF_X1)                      0.09       0.09 r
+  U5578/ZN (INV_X1)                                       0.05       0.14 f
+  U9004/ZN (NOR2_X1)                                      0.07       0.21 r
+  U9041/ZN (INV_X1)                                       0.03       0.23 f
+  U9047/S (FA_X1)                                         0.13       0.37 r
+  U9043/ZN (NOR2_X1)                                      0.03       0.40 f
+  U4593/ZN (NOR2_X1)                                      0.07       0.47 r
+  U9054/ZN (NAND2_X1)                                     0.03       0.50 f
+  U9062/ZN (OAI21_X1)                                     0.05       0.55 r
+  U6600/ZN (INV_X1)                                       0.03       0.59 f
+  U9122/ZN (OAI21_X1)                                     0.05       0.63 r
+  U9125/ZN (XNOR2_X1)                                     0.06       0.70 r
+  U5871/ZN (INV_X1)                                       0.03       0.72 f
+  U5061/ZN (OR2_X1)                                       0.06       0.78 f
+  U4627/ZN (OAI21_X1)                                     0.05       0.83 r
+  U5579/Z (BUF_X1)                                        0.05       0.88 r
+  U9162/ZN (AND2_X1)                                      0.04       0.93 r
+  U9163/ZN (OR2_X1)                                       0.03       0.96 r
+  layer1/dp_8_l1_fc1_8_4_16_1_8/reg_C3/q_reg[5]/D (DFF_X1)
+                                                          0.01       0.97 r
+  data arrival time                                                  0.97
+
+  clock clk (rise edge)                                   1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  layer1/dp_8_l1_fc1_8_4_16_1_8/reg_C3/q_reg[5]/CK (DFF_X1)
+                                                          0.00       1.00 r
+  library setup time                                     -0.03       0.97
+  data required time                                                 0.97
+  --------------------------------------------------------------------------
+  data required time                                                 0.97
+  data arrival time                                                 -0.97
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+1
+write -f verilog $TOP_MOD_NAME -output gates.v -hierarchy
+Writing verilog file '/home/home5/stajne/ese507/proj3/gates.v'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
+1
+quit
+
+Memory usage for this session 206 Mbytes.
+Memory usage for this session including child processes 230 Mbytes.
+CPU usage for this session 54 seconds ( 0.01 hours ).
+Elapsed time for this session 58 seconds ( 0.02 hours ).
+
+Thank you...
