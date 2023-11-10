@@ -2,6 +2,8 @@
 
 The goal of Part 1 is to build a hardware generator that produces a SystemVerilog design for one neural network layer using<br/> **y = f(W.x)**, controllable by a number of parameters.
 
+src="https://github.com/Shruti-Tajne/HardwareGenerationTool/assets/150401115/6a19189a-885e-4b6f-b6bf-77b238376043">
+
 These parameters are:
 
 **1) Matrix dimensions M and N:**
