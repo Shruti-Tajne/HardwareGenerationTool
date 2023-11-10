@@ -1,6 +1,6 @@
 # Part 3: Generating and Optimizing a Three-Layer System
 
-Neural networks typically consist of multiple layers. In this part of the project, we will extend your generator to produce a three-layer network.
+Neural networks typically consist of multiple layers. In this part of the project, we will extend our generator to produce a three-layer network.
 
 Each of the three layers will be generated using our result from Part 2. Now, the output from Layer 1 will be directly connected to the input ports of layer 2, and so on.
 
@@ -14,9 +14,9 @@ Note that this creates a new constraint: the number of elements in the output ve
 
 Additionally, we will allow the P parameters of the layers to be independent. That is, each layer can have a different amount of parallelism: P1, P2, and P3. (But recall that the parallelism must evenly divide the output size, so M1/P1, M2/P2, and M3/P3 must all be integers.)
 
-Assume that all three layers have the same values of parameters T and R.
+NOTE: We are assuming that all three layers have the same values of parameters T and R.
 
-## Measuring Performance as Throughput
+# Measuring Performance as Throughput
 The system as we have described it is a big pipeline—values will flow out of one layer into the next. Ideally, all three layers will be able to perform useful computations concurrently. 
 
 * Once Layer 1 is done processing a vector, its resulting output vector will flow into Layer 2, and so on. 
