@@ -2,7 +2,7 @@
 
 The goal of Part 1 is to build a hardware generator that produces a SystemVerilog design for one neural network layer using<br/> **y = f(W.x)**, controllable by a number of parameters.
 
-src="https://github.com/Shruti-Tajne/HardwareGenerationTool/assets/150401115/6a19189a-885e-4b6f-b6bf-77b238376043">
+<img width="461" alt="proj3part1" src="https://github.com/Shruti-Tajne/HardwareGenerationTool/assets/150401115/d55da898-50f4-4bbd-8631-8598e34571d0">
 
 These parameters are:
 
@@ -20,4 +20,10 @@ The generator will read in a text file that contains the constant values your sy
 
 The hardware that the generator produces should use the same input/output ports and protocol as in Project 2.
 
+<img width="638" alt="proj3part1_sv_file" src="https://github.com/Shruti-Tajne/HardwareGenerationTool/assets/150401115/b4852065-a461-47ef-843e-32e7d8c8ea80">
+
 For part 1, the generator should produce a design whose top-level module is named fc_M_N_T_R_1, where M, N, T, and R are replaced with their actual parameter values, e.g., fc_4_5_12_1_1.
+
+Datapath:
+
+<img width="470" alt="proj3part1_datapath" src="https://github.com/Shruti-Tajne/HardwareGenerationTool/assets/150401115/debbb2fc-8f8d-450d-8143-254639988529">
