@@ -11,16 +11,24 @@ There are three parts in this project built on top of the previous parts:
 3) In the third part, we'll take this idea further by using solution from Part 2 to make hardware for a three-layer neural network. This means creating a bigger system by putting together three layers. Here, the software will get a budget for multipliers (the maximum allowed) and details for each layer. The generator will use this info to decide how much parallel processing to use for each layer, maximizing the overall system performance.
 
 A fully-connected layer of neurons is a set where each neuron takes the same N inputs, but has a different set of weights and a different bias value b: 
-y[m] = f ( ((Summation of W[m][n]) . x[n]) + b[m] ) ------------- (1)
+
+<img width="357" alt="NN" src="https://github.com/Shruti-Tajne/HardwareGenerationTool/assets/150401115/a91668ab-b6ef-4ff2-927d-b43c28b9ec25">
+
+<img width="365" alt="1" src="https://github.com/Shruti-Tajne/HardwareGenerationTool/assets/150401115/2f5fc3e8-706e-44e7-ad54-0b8427697df8">
 
 In this project, we will make the simplifying assumption that b = 0, meaning we can omit the bias from the ReLu, giving: 
-y[m] = f( (Summation of W[m][n]) . x[n] ) ------------- (2)
+
+<img width="353" alt="2" src="https://github.com/Shruti-Tajne/HardwareGenerationTool/assets/150401115/320667cd-3f91-465b-a63e-42808f702ba6">
 
 Rather than operating on each individual value of the vector y, we can instead write this operation simply as a matrix-vector multiplication—with the extra inclusion of the function where: 
-y = f(W.x) -------------- (3)
+
+<img width="184" alt="4" src="https://github.com/Shruti-Tajne/HardwareGenerationTool/assets/150401115/144a4c3d-c3d9-4ddd-939a-23e91798f02d">
+
 - W is an M by N matrix, representing the “weights” of the neural layer
 - x is a column-vector of length N, representing the inputs
 - f ( ) applies a point-wise ReLU function: any negative value in the vector is replaced with 0, and
 - y is a column-vector of length M, representing the outputs.
   
 Because this operation is based on a matrix-vector product, the work in this project will build on the matrix-vector multiplier done in Project 2.
+
+In our project, we will be building systems to efficiently evaluate neural network layers whose parameters are already known, so we will not consider training.
